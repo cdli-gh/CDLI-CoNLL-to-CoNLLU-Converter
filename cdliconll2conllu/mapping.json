@@ -1,0 +1,139 @@
+{
+              "CDLI-CoNLL-Fields": [
+                "ID",
+                "FORM",
+                "SEGM",
+                "XPOSTAG",
+                "HEAD",
+                "DEPREL",
+                "MISC"
+              ],
+
+              "CoNLL-U-Fields": [
+                "ID",
+                "FORM",
+                "LEMMA",
+                "UPOSTAG",
+                "XPOSTAG",
+                "FEATS",
+                "HEAD",
+                "DEPREL",
+                "MISC"
+              ],
+
+              "xPOSTagMapping": {
+                "AJ": "ADJ",
+                "AV": "ADV",
+                "NU": "NUM",
+                "CNJ": "CCONJ",
+                "DET": "DET",
+                "J": "INTJ",
+                "N": "NOUN",
+                "V": "VERB",
+                "PRP": "ADP",
+                "DN": "PROPN",
+                "EN": "PROPN",
+                "GN": "PROPN",
+                "MN": "PROPN",
+                "PN": "PROPN",
+                "RN": "PROPN",
+                "SN": "PROPN",
+                "TN": "PROPN",
+                "WN": "PROPN",
+                "AN": "PROPN",
+                "CN": "PROPN",
+                "FN": "PROPN",
+                "LN": "PROPN",
+                "ON": "PROPN",
+                "QN": "PROPN",
+                "YN": "PROPN"
+                },
+
+              "posToFeatMapping": {
+                  "NOUN": [
+                    "Animacy",
+                    "Case",
+                    "Number"
+                  ],
+                  "VERB": [
+                    "Aspect",
+                    "Mood",
+                    "Number",
+                    "Person",
+                    "Polarity",
+                    "Verb Form",
+                    "Voice"
+                  ],
+                  "ADJ": [
+                    "Case",
+                    "Number"
+                  ],
+                  "NUM": [
+                    "Case"
+                  ],
+                  "PROPN": [
+                    "Case",
+                    "Number",
+                    "Animacy"
+                  ]
+                },
+
+              "featureMapping": {
+                "Case": {
+                  "ABS": "Abs",
+                  "GEN": "Gen",
+                  "ERG": "Erg",
+                  "ABL": "Abl"
+                },
+                "Animacy": {
+                  "H": "Hum",
+                  "NH": "Nhum"
+                },
+                "Number": {
+                  "PL": "Plur",
+                  "SG": "Sing"
+                },
+                "Polarity": {
+                  "MOD3": "Neg",
+                  "NEG": "Neg",
+                  "MOD4": "Neg",
+                  "MOD6": "Pos",
+                  "MOD7": "Pos"
+                },
+                "Person": {
+                  "0": "0",
+                  "1": "1",
+                  "2": "2",
+                  "3": "3",
+                  "4": "4"
+                },
+                "Aspect": {
+                  "ANT": "Prosp"
+                },
+                "Verb Form": {
+                  "FIN": "Fin",
+                  "FIN-L1": "Fin",
+                  "FIN-L2": "Fin"
+                },
+                "Mood": {
+                  "MOD1": "Opt",
+                  "MOD2": "Opt",
+                  "MOD4": "Opt"
+                },
+                "Voice": {
+                  "MID": "Mid"
+                }
+              },
+
+              "multipleFeatureEntries":[
+                "Case"
+              ],
+
+              "defaultFeature": {
+                "NOUN": {
+                  "Number": "Sing"
+                }
+              }
+
+
+}
