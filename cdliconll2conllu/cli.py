@@ -2,7 +2,7 @@ import os
 import click
 from stat import ST_MODE, S_ISREG
 
-from converter import cdliCoNLLtoCoNNLUConverter
+from cdliconll2conllu.converter import cdliCoNLLtoCoNNLUConverter
 
 
 def file_process(cdliconllInFile, verbose=False):
@@ -19,20 +19,20 @@ def file_process(cdliconllInFile, verbose=False):
 def check_and_process(pathname, verbose=False):
     mode = os.stat(pathname)[ST_MODE]
 
-    if S_ISREG(mode) and pathname.lower().endswith('.ann'):
+    if S_ISREG(mode) and pathname.lower().endswith('.txt'):
         # It's a file, call the callback function
         if verbose:
             click.echo('Info: Processing {0}.'.format(pathname))
 
-        bratFilePath = pathname
+        cdliConllFile = pathname
 
         t = pathname.split('.')
-        conllFilePath = str(t[0]) + '.conll'
+        #conllFilePath = str(t[0]) + '.conll'
 
-        if not os.path.exists(conllFilePath):
-            click.echo("Error: CoNLL file doesn't exist")
+        # if not os.path.exists(conllFilePath):
+        #     click.echo("Error: CoNLL file doesn't exist")
 
-        file_process(bratFilePath, conllFilePath, verbose)
+        file_process(cdliConllFile, verbose)
 
 
 @click.command()

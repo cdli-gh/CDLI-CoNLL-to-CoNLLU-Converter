@@ -87,7 +87,10 @@
                 },
                 "Animacy": {
                   "H": "Hum",
-                  "NH": "Nhum"
+                  "NH": "Nhum",
+                  "DAT-H": "Hum",
+                  "L2-H": "Hum",
+                  "L3-H": "Hum"
                 },
                 "Number": {
                   "PL": "Plur",

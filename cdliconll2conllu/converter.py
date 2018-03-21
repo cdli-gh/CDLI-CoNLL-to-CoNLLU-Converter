@@ -2,7 +2,7 @@
 import codecs
 import click
 import os
-import mapping as mp
+from cdliconll2conllu.mapping import mapping
 
 OUTPUT_FOLDER = 'output'
 
@@ -12,7 +12,7 @@ class cdliCoNLLtoCoNNLUConverter:
         self.cdliCoNLLInputFileName = cdliCoNLLInputFileName
         self.outFolder = os.path.join('', OUTPUT_FOLDER)
         self.verbose = verbose
-        self.cl = mp.Mapping()
+        self.cl = mapping()
         self.__reset__()
 
     def __reset__(self):
@@ -28,7 +28,7 @@ class cdliCoNLLtoCoNNLUConverter:
 
             for line in openedCDLICoNLLFile:
                 line = line.strip()
-                line = line.split('\t')
+                line = line.split()
                 inputLines.append(line)
 
             self.convertCDLICoNLLtoCoNLLU(inputLines)
@@ -72,6 +72,11 @@ class cdliCoNLLtoCoNNLUConverter:
                 feats = dict()
                 featList = xpostag.copy()
 
+                #animacy Hum Mapping to PN, DN, RN
+                HumPos = ['PN', 'DN', 'RN']
+                if typeCDLICoNLL in HumPos:
+                    feats['Animacy'] = 'Hum'
+
                 #default mapping
                 if upostag in self.cl.defaultMap:
                     for feature in self.cl.defaultMap[upostag]:
@@ -83,8 +88,14 @@ class cdliCoNLLtoCoNNLUConverter:
                         found = False
                         for feat in self.cl.posToFeatsMap[upostag]:
                             if item in self.cl.featsMap[feat]:
-                                feats[feat] = self.cl.featsMap[feat][item]
-                                found = True
+                                if feat in feats:
+                                    #check if multiple entries allowed
+                                    if feat in self.cl.multiList:
+                                        combinedEntry = str(feats[feat]) + "," + str(self.cl.featsMap[feat][item])
+                                        found = True
+                                else:
+                                    feats[feat] = self.cl.featsMap[feat][item]
+                                    found = True
                         if not found:
                             splitItem = item.split('-')
                             featList += splitItem

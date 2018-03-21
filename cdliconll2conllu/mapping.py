@@ -1,6 +1,6 @@
 import json
 
-class Mapping:
+class mapping:
     def __init__(self):
 
         #open json file containing mapping information and load it in a python object
