@@ -16,7 +16,7 @@ class cdliCoNLLtoCoNNLUConverter:
         self.__reset__()
 
     def __reset__(self):
-        self.outputFileName = ''
+        self.outputFileName = self.cdliCoNLLInputFileName[:-4]
         self.outputLines = list()
 
     def convert(self):
@@ -36,12 +36,12 @@ class cdliCoNLLtoCoNNLUConverter:
 
     def convertCDLICoNLLtoCoNLLU(self, inputLines):
 
-
+        # print(inputLines)
         for line in inputLines:
-            inputList = line.strip().split()
+            inputList = line
             inputData = dict()
 
-            for i in range(self.cl.cdliConllFields):
+            for i in range(len(self.cl.cdliConllFields)):
                 inputData[self.cl.cdliConllFields[i]] = inputList[i]
 
             result = dict()
@@ -77,33 +77,52 @@ class cdliCoNLLtoCoNNLUConverter:
                 if typeCDLICoNLL in HumPos:
                     feats['Animacy'] = 'Hum'
 
+                # print(featList)
                 #default mapping
+                defaults = list()
                 if upostag in self.cl.defaultMap:
                     for feature in self.cl.defaultMap[upostag]:
                         feats[feature] = self.cl.defaultMap[upostag][feature]
-
+                        defaults.append(feature)
+                #print(defaults)
                 #remaining mapping
                 for item in featList:
+                    # print(item)
                     if item.find('-') != -1:
+                        # print(item)
                         found = False
                         for feat in self.cl.posToFeatsMap[upostag]:
                             if item in self.cl.featsMap[feat]:
                                 if feat in feats:
+                                    if feat in defaults:
+                                        feats[feat] = self.cl.featsMap[feat][item]
+                                        defaults.pop(defaults.index(feat))
                                     #check if multiple entries allowed
                                     if feat in self.cl.multiList:
                                         combinedEntry = str(feats[feat]) + "," + str(self.cl.featsMap[feat][item])
+                                        feats[feat] = combinedEntry
                                         found = True
                                 else:
                                     feats[feat] = self.cl.featsMap[feat][item]
                                     found = True
-                        if not found:
+                        if found == False:
                             splitItem = item.split('-')
                             featList += splitItem
+                            # print(featList)
                     else:
                         for feat in self.cl.posToFeatsMap[upostag]:
                             if item in self.cl.featsMap[feat]:
-                                feats[feat] = self.cl.featsMap[feat][item]
-
+                                if feat not in feats:
+                                    feats[feat] = self.cl.featsMap[feat][item]
+                                else:
+                                    if feat in defaults:
+                                        feats[feat] = self.cl.featsMap[feat][item]
+                                        defaults.pop(defaults.index(feat))
+                                    if feat in self.cl.multiList:
+                                        combinedEntry = str(feats[feat]) + "," + str(self.cl.featsMap[feat][item])
+                                        feats[feat] = combinedEntry
+                                        found = True
+                    # print(feats)
                 feature = ''
                 for key, value in feats.items():
                     feature = feature + key + '=' + value + '|'
@@ -128,10 +147,10 @@ class cdliCoNLLtoCoNNLUConverter:
 
         with codecs.open(outFileName, 'w+', 'utf-8') as outputFile:
             header = '\t'.join(self.cl.conllUFields)
+            header = header + '\n'
             outputFile.writelines(header)
 
             for line in self.outputLines:
                 l = '\t'.join(line)
+                l = l + '\n'
                 outputFile.writelines(l)
-
-
