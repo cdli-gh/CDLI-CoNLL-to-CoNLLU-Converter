@@ -10,7 +10,7 @@ class mapping:
         #open json file containing mapping information and load it in a python object
         filepath = pkg_resources.resource_filename(__name__, 'mapping.json')
         self.jsonFile = filepath
-        print(self.jsonFile)
+        # print(self.jsonFile)
         self.jsonData = json.load(open(self.jsonFile))
 
         #create mappings and lists which will be used for conversion
