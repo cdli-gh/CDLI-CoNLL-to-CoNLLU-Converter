@@ -19,7 +19,7 @@ def file_process(cdliconllInFile, verbose=False):
 def check_and_process(pathname, verbose=False):
     mode = os.stat(pathname)[ST_MODE]
 
-    if S_ISREG(mode) and pathname.lower().endswith('.txt'):
+    if S_ISREG(mode) and pathname.lower().endswith('.conll'):
         # It's a file, call the callback function
         if verbose:
             click.echo('Info: Processing {0}.'.format(pathname))
