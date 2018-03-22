@@ -135,6 +135,9 @@
               "defaultFeature": {
                 "NOUN": {
                   "Number": "Sing"
+                },
+                "PROPN": {
+                  "Number": "Sing"
                 }
               }
 
