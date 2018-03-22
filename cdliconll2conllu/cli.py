@@ -45,6 +45,7 @@ def main(input_path, verbose):
         with click.progressbar(os.listdir(input_path), label='Info: Converting the files') as bar:
             for f in bar:
                 pathname = os.path.join(input_path, f)
+                pathname = os.path.abspath(pathname)
                 print(pathname)
 
                 check_and_process(pathname, verbose)
