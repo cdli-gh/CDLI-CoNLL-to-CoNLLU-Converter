@@ -20,8 +20,8 @@ setup(
     entry_points={
 
         'console_scripts': [
-            'cdliconll2conllu = cdliconll2conllu.cli:main',
-        ],
+            'cdliconll2conllu = cli:main'
+        ]
     },
     classifiers=[
         # As from http://pypi.python.org/pypi?%3Aaction=list_classifiers
