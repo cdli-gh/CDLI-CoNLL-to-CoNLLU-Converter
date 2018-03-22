@@ -1,10 +1,15 @@
 import json
+import pkg_resources
+
+resource_package = __name__  # Could be any module/package name
+mappingFile = '/'.join('mapping.json')
 
 class mapping:
     def __init__(self):
 
         #open json file containing mapping information and load it in a python object
-        self.jsonFile = "mapping.json"
+        filepath = pkg_resources.resource_filename(__name__, mappingFile)
+        self.jsonFile = filepath
         self.jsonData = json.load(open(self.jsonFile))
 
         #create mappings and lists which will be used for conversion
