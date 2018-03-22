@@ -16,7 +16,7 @@ class cdliCoNLLtoCoNNLUConverter:
         self.__reset__()
 
     def __reset__(self):
-        self.outputFileName = self.cdliCoNLLInputFileName[:-4]
+        self.outputFileName = self.cdliCoNLLInputFileName[:-6]
         self.outputLines = list()
 
     def convert(self):
@@ -143,7 +143,7 @@ class cdliCoNLLtoCoNNLUConverter:
 
 
     def writeToFile(self):
-        outFileName = os.path.join(self.outFolder, self.outputFileName + ".conllU")
+        outFileName = os.path.join(self.outFolder, self.outputFileName + ".conll")
 
         with codecs.open(outFileName, 'w+', 'utf-8') as outputFile:
             header = '\t'.join(self.cl.conllUFields)
