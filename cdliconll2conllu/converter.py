@@ -73,10 +73,11 @@ class cdliCoNLLtoCoNNLUConverter:
                 try:
                     typeCDLICoNLL = list(set(xpostag).intersection(set(self.cl.xPosTag.keys())))[0]
                 except:
-                    print("Error in Parsing Data: Incorrect XPOSTAG at line: ", line)
+                    errorLine = '\t'.join(line)
+                    print("Error in Parsing Data: Incorrect XPOSTAG at line: ", errorLine)
                     print("Exiting...")
                     sys.exit(1)
-                    
+
                 result['UPOSTAG'] = self.cl.xPosTag[typeCDLICoNLL]
                 result['XPOSTAG'] = typeCDLICoNLL
                 xpostag.pop(xpostag.index(typeCDLICoNLL))
