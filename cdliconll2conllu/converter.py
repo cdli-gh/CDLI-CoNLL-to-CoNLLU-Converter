@@ -67,7 +67,9 @@ class cdliCoNLLtoCoNNLUConverter:
                 start = segm.rfind('-', 0, position + 1)
                 result['LEMMA'] = segm[start + 1: (position + 1)]
                 if result['LEMMA'] == '':
-                    print("Incorrect Segment...Exiting")
+                    errorLine = '\t'.join(line)
+                    print("Incorrect Segment at Line:", errorLine)
+                    print("Exiting...")
                     sys.exit(1)
 
             if inputData['XPOSTAG'] == '_':
@@ -90,7 +92,7 @@ class cdliCoNLLtoCoNNLUConverter:
 
                 upostag = self.cl.xPosTag[typeCDLICoNLL]
                 feats = dict()
-                featList = xpostag.copy()
+                featList = list(xpostag)
 
                 #animacy Hum Mapping to PN, DN, RN
                 HumPos = ['PN', 'DN', 'RN']
@@ -148,7 +150,10 @@ class cdliCoNLLtoCoNNLUConverter:
                     feature = feature + key + '=' + value + '|'
 
                 feature = feature[:-1]
-                result['FEATS'] = feature
+                if feature == '':
+                    result['FEATS'] = '_'
+                else:
+                    result['FEATS'] = feature
 
             result['HEAD'] = inputData['HEAD']
             result['DEPREL'] = inputData['DEPREL']
