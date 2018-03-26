@@ -3,6 +3,7 @@ import codecs
 import click
 import os
 from cdliconll2conllu.mapping import mapping
+import re
 
 OUTPUT_FOLDER = 'output'
 
@@ -12,7 +13,7 @@ class cdliCoNLLtoCoNNLUConverter:
         self.cdliCoNLLInputFileName = cdliCoNLLInputFileName
 
         path = os.path.abspath(cdliCoNLLInputFileName)
-        newPath = path[:len(path) - len(cdliCoNLLInputFileName) + 1]
+        newPath = path[:len(path) - len(cdliCoNLLInputFileName)]
         self.outFolder = newPath + OUTPUT_FOLDER
 
         # self.outFolder = os.path.join('', OUTPUT_FOLDER)
@@ -21,7 +22,7 @@ class cdliCoNLLtoCoNNLUConverter:
         self.__reset__()
 
     def __reset__(self):
-        self.outputFileName = self.cdliCoNLLInputFileName[:-6]
+        self.outputFileName = ''
         self.outputLines = list()
 
     def convert(self):
@@ -149,6 +150,8 @@ class cdliCoNLLtoCoNNLUConverter:
 
 
     def writeToFile(self):
+        filename = re.split('[/ .]', self.cdliCoNLLInputFileName)
+        self.outputFileName = filename[-2]
         outFileName = os.path.join(self.outFolder, self.outputFileName + ".conll")
 
         with codecs.open(outFileName, 'w+', 'utf-8') as outputFile:

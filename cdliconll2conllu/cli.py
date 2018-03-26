@@ -7,7 +7,7 @@ from cdliconll2conllu.converter import cdliCoNLLtoCoNNLUConverter
 
 def file_process(cdliconllInFile, verbose=False):
     path = os.path.abspath(cdliconllInFile)
-    newPath = path[:len(path) - len(cdliconllInFile) + 1]
+    newPath = path[:len(path) - len(cdliconllInFile)]
     outfolder = newPath + 'output'
     # outfolder = os.path.join('output')
 
