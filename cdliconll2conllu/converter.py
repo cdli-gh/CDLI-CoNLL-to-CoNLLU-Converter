@@ -13,7 +13,7 @@ class cdliCoNLLtoCoNNLUConverter:
 
         path = os.path.abspath(cdliCoNLLInputFileName)
         newPath = path[:len(path) - len(cdliCoNLLInputFileName) + 1]
-        self.outfolder = newPath + OUTPUT_FOLDER
+        self.outFolder = newPath + OUTPUT_FOLDER
 
         # self.outFolder = os.path.join('', OUTPUT_FOLDER)
         self.verbose = verbose
