@@ -151,7 +151,7 @@ class cdliCoNLLtoCoNNLUConverter:
 
     def writeToFile(self):
         filename = os.path.basename(self.cdliCoNLLInputFileName)
-        print(filename)
+        # print(filename)
         self.outputFileName = filename
         outFileName = os.path.join(self.outFolder, self.outputFileName)
 
