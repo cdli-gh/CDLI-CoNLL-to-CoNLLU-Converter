@@ -46,7 +46,7 @@ class cdliCoNLLtoCoNNLUConverter:
         for line in inputLines:
             inputList = line
             inputData = dict()
-
+            print(line)
             for i in range(len(self.cl.cdliConllFields)):
                 inputData[self.cl.cdliConllFields[i]] = inputList[i]
 
