@@ -4,7 +4,7 @@ dependencies = ['click']
 
 setup(
     name='cdliconll2conllu',
-    version='2.0.4',
+    version='2.0.5',
     url='https://github.com/cdli-gh/CDLI-CoNLL-to-CoNLLU-Converter',
     license='BSD',
     author='Anoosha Sagar',
