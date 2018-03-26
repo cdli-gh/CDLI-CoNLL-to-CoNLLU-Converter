@@ -19,6 +19,7 @@ class cdliCoNLLtoCoNNLUConverter:
         self.outFolder = os.path.join('', OUTPUT_FOLDER)
         self.verbose = verbose
         self.cl = mapping()
+        self.headerLines = list()
         self.__reset__()
 
     def __reset__(self):
@@ -37,6 +38,8 @@ class cdliCoNLLtoCoNNLUConverter:
                 if line[0] != '#':
                     line = line.split()
                     inputLines.append(line)
+                else:
+                    self.headerLines.append(line)
 
             self.convertCDLICoNLLtoCoNLLU(inputLines)
 
@@ -163,8 +166,11 @@ class cdliCoNLLtoCoNNLUConverter:
         outFileName = os.path.join(self.outFolder, self.outputFileName)
 
         with codecs.open(outFileName, 'w+', 'utf-8') as outputFile:
+            textNumber = self.headerLines[0]
+            textNumber = textNumber + '\n'
+            outputFile.writelines(textNumber)
             header = '\t'.join(self.cl.conllUFields)
-            header = header + '\n'
+            header = '#' + header + '\n'
             outputFile.writelines(header)
 
             for line in self.outputLines:
