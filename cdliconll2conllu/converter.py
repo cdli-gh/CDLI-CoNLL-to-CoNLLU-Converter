@@ -12,11 +12,11 @@ class cdliCoNLLtoCoNNLUConverter:
     def __init__(self, cdliCoNLLInputFileName, verbose):
         self.cdliCoNLLInputFileName = cdliCoNLLInputFileName
 
-        path = os.path.abspath(cdliCoNLLInputFileName)
-        newPath = path[:len(path) - len(cdliCoNLLInputFileName)]
-        self.outFolder = newPath + OUTPUT_FOLDER
+        # path = os.path.abspath(cdliCoNLLInputFileName)
+        # newPath = path[:len(path) - len(cdliCoNLLInputFileName)]
+        # self.outFolder = newPath + OUTPUT_FOLDER
 
-        # self.outFolder = os.path.join('', OUTPUT_FOLDER)
+        self.outFolder = os.path.join('', OUTPUT_FOLDER)
         self.verbose = verbose
         self.cl = mapping()
         self.__reset__()
@@ -47,7 +47,7 @@ class cdliCoNLLtoCoNNLUConverter:
         for line in inputLines:
             inputList = line
             inputData = dict()
-            print(line)
+            # print(line)
             for i in range(len(self.cl.cdliConllFields)):
                 inputData[self.cl.cdliConllFields[i]] = inputList[i]
 
@@ -151,6 +151,7 @@ class cdliCoNLLtoCoNNLUConverter:
 
     def writeToFile(self):
         filename = re.split('[/ .]', self.cdliCoNLLInputFileName)
+        print(filename)
         self.outputFileName = filename[-2]
         outFileName = os.path.join(self.outFolder, self.outputFileName + ".conll")
 

@@ -6,10 +6,11 @@ from cdliconll2conllu.converter import cdliCoNLLtoCoNNLUConverter
 
 
 def file_process(cdliconllInFile, verbose=False):
-    path = os.path.abspath(cdliconllInFile)
-    newPath = path[:len(path) - len(cdliconllInFile)]
-    outfolder = newPath + 'output'
-    # outfolder = os.path.join('output')
+    # path = os.path.abspath(cdliconllInFile)
+    # newPath = path[:len(path) - len(cdliconllInFile)]
+    # outfolder = newPath + 'output'
+
+    outfolder = os.path.join('output')
 
     if not os.path.exists(outfolder):
         os.makedirs(outfolder)
