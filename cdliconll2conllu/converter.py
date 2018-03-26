@@ -3,7 +3,7 @@ import codecs
 import click
 import os
 from cdliconll2conllu.mapping import mapping
-import re
+import sys
 
 OUTPUT_FOLDER = 'output'
 
@@ -70,7 +70,13 @@ class cdliCoNLLtoCoNNLUConverter:
                 result['FEATS'] = '_'
             else:
                 xpostag = inputData['XPOSTAG'].split('.')
-                typeCDLICoNLL = list(set(xpostag).intersection(set(self.cl.xPosTag.keys())))[0]
+                try:
+                    typeCDLICoNLL = list(set(xpostag).intersection(set(self.cl.xPosTag.keys())))[0]
+                except:
+                    print("Error in Parsing Data: Incorrect XPOSTAG at line: ", line)
+                    print("Exiting...")
+                    sys.exit(1)
+                    
                 result['UPOSTAG'] = self.cl.xPosTag[typeCDLICoNLL]
                 result['XPOSTAG'] = typeCDLICoNLL
                 xpostag.pop(xpostag.index(typeCDLICoNLL))
