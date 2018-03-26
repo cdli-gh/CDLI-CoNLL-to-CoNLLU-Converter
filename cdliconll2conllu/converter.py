@@ -150,10 +150,10 @@ class cdliCoNLLtoCoNNLUConverter:
 
 
     def writeToFile(self):
-        filename = re.split('[/ .]', self.cdliCoNLLInputFileName)
+        filename = os.path.basename(self.cdliCoNLLInputFileName)
         print(filename)
-        self.outputFileName = filename[-2]
-        outFileName = os.path.join(self.outFolder, self.outputFileName + ".conll")
+        self.outputFileName = filename
+        outFileName = os.path.join(self.outFolder, self.outputFileName)
 
         with codecs.open(outFileName, 'w+', 'utf-8') as outputFile:
             header = '\t'.join(self.cl.conllUFields)
