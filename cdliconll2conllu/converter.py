@@ -10,7 +10,12 @@ class cdliCoNLLtoCoNNLUConverter:
 
     def __init__(self, cdliCoNLLInputFileName, verbose):
         self.cdliCoNLLInputFileName = cdliCoNLLInputFileName
-        self.outFolder = os.path.join('', OUTPUT_FOLDER)
+
+        path = os.path.abspath(cdliCoNLLInputFileName)
+        newPath = path[:len(path) - len(cdliCoNLLInputFileName) + 1]
+        self.outfolder = newPath + OUTPUT_FOLDER
+
+        # self.outFolder = os.path.join('', OUTPUT_FOLDER)
         self.verbose = verbose
         self.cl = mapping()
         self.__reset__()
@@ -28,8 +33,9 @@ class cdliCoNLLtoCoNNLUConverter:
 
             for line in openedCDLICoNLLFile:
                 line = line.strip()
-                line = line.split()
-                inputLines.append(line)
+                if line[0] != '#':
+                    line = line.split()
+                    inputLines.append(line)
 
             self.convertCDLICoNLLtoCoNLLU(inputLines)
 

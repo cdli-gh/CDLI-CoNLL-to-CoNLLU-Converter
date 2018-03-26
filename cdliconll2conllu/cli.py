@@ -6,7 +6,10 @@ from cdliconll2conllu.converter import cdliCoNLLtoCoNNLUConverter
 
 
 def file_process(cdliconllInFile, verbose=False):
-    outfolder = os.path.join('output')
+    path = os.path.abspath(cdliconllInFile)
+    newPath = path[:len(path) - len(cdliconllInFile) + 1]
+    outfolder = newPath + 'output'
+    # outfolder = os.path.join('output')
 
     if not os.path.exists(outfolder):
         os.makedirs(outfolder)
@@ -45,8 +48,6 @@ def main(input_path, verbose):
         with click.progressbar(os.listdir(input_path), label='Info: Converting the files') as bar:
             for f in bar:
                 pathname = os.path.join(input_path, f)
-                pathname = os.path.abspath(pathname)
-                print(pathname)
 
                 check_and_process(pathname, verbose)
     else:
