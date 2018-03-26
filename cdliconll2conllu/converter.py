@@ -66,6 +66,9 @@ class cdliCoNLLtoCoNNLUConverter:
                 position = segm.find(']')
                 start = segm.rfind('-', 0, position + 1)
                 result['LEMMA'] = segm[start + 1: (position + 1)]
+                if result['LEMMA'] == '':
+                    print("Incorrect Segment...Exiting")
+                    sys.exit(1)
 
             if inputData['XPOSTAG'] == '_':
                 result['UPOSTAG'] = '_'
