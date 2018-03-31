@@ -2,12 +2,13 @@
 import codecs
 import click
 import os
-from cdliconll2conllu.mapping import mapping
+from cdliconll2conllu.mapping import Mapping
 import sys
 
 OUTPUT_FOLDER = 'output'
 
-class cdliCoNLLtoCoNNLUConverter:
+
+class CdliCoNLLtoCoNLLUConverter:
 
     def __init__(self, cdliCoNLLInputFileName, verbose):
         self.cdliCoNLLInputFileName = cdliCoNLLInputFileName
@@ -18,7 +19,7 @@ class cdliCoNLLtoCoNNLUConverter:
 
         self.outFolder = os.path.join('', OUTPUT_FOLDER)
         self.verbose = verbose
-        self.cl = mapping()
+        self.cl = Mapping()
         self.headerLines = list()
         self.__reset__()
 
@@ -42,7 +43,6 @@ class cdliCoNLLtoCoNNLUConverter:
                     self.headerLines.append(line)
 
             self.convertCDLICoNLLtoCoNLLU(inputLines)
-
 
     def convertCDLICoNLLtoCoNLLU(self, inputLines):
 
@@ -94,20 +94,20 @@ class cdliCoNLLtoCoNNLUConverter:
                 feats = dict()
                 featList = list(xpostag)
 
-                #animacy Hum Mapping to PN, DN, RN
+                # animacy Hum Mapping to PN, DN, RN
                 HumPos = ['PN', 'DN', 'RN']
                 if typeCDLICoNLL in HumPos:
                     feats['Animacy'] = 'Hum'
 
                 # print(featList)
-                #default mapping
+                # default mapping
                 defaults = list()
                 if upostag in self.cl.defaultMap:
                     for feature in self.cl.defaultMap[upostag]:
                         feats[feature] = self.cl.defaultMap[upostag][feature]
                         defaults.append(feature)
-                #print(defaults)
-                #remaining mapping
+                # print(defaults)
+                # remaining mapping
                 for item in featList:
                     # print(item)
                     if item.find('-') != -1:
@@ -119,7 +119,7 @@ class cdliCoNLLtoCoNNLUConverter:
                                     if feat in defaults:
                                         feats[feat] = self.cl.featsMap[feat][item]
                                         defaults.pop(defaults.index(feat))
-                                    #check if multiple entries allowed
+                                    # check if multiple entries allowed
                                     if feat in self.cl.multiList:
                                         combinedEntry = str(feats[feat]) + "," + str(self.cl.featsMap[feat][item])
                                         feats[feat] = combinedEntry
@@ -165,7 +165,6 @@ class cdliCoNLLtoCoNNLUConverter:
                 output.append(result[field])
 
             self.outputLines.append(output)
-
 
     def writeToFile(self):
         filename = os.path.basename(self.cdliCoNLLInputFileName)
