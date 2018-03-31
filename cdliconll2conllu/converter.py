@@ -21,6 +21,7 @@ class CdliCoNLLtoCoNLLUConverter:
         self.verbose = verbose
         self.cl = Mapping()
         self.headerLines = list()
+        self.outputFileName = ''
         self.__reset__()
 
     def __reset__(self):
@@ -167,12 +168,14 @@ class CdliCoNLLtoCoNLLUConverter:
             self.outputLines.append(output)
 
     def writeToFile(self):
-        filename = os.path.basename(self.cdliCoNLLInputFileName)
-        # print(filename)
-        self.outputFileName = filename
-        outFileName = os.path.join(self.outFolder, self.outputFileName)
-
-        with codecs.open(outFileName, 'w+', 'utf-8') as outputFile:
+        folder = os.path.join(os.path.dirname(self.cdliCoNLLInputFileName), OUTPUT_FOLDER)
+        self.outputFileName = os.path.join(folder, os.path.basename(self.cdliCoNLLInputFileName))
+        if self.verbose:
+            click.echo('Info: Creating output at {0}.'.format(self.outputFileName))
+        if not os.path.exists(folder):
+            click.echo('Info: Creating folder at {0} as it does not exist.'.format(folder))
+            os.makedirs(folder)
+        with codecs.open(self.outputFileName, 'w+', 'utf-8') as outputFile:
             textNumber = self.headerLines[0]
             textNumber = textNumber + '\n'
             outputFile.writelines(textNumber)
