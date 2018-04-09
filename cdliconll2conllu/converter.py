@@ -32,7 +32,7 @@ class CdliCoNLLtoCoNLLUConverter:
         if self.verbose:
             click.echo('Info: Reading file {0}.'.format(self.cdliCoNLLInputFileName))
 
-        with codecs.open(self.cdliCoNLLInputFileName) as openedCDLICoNLLFile:
+        with codecs.open(self.cdliCoNLLInputFileName, 'r', 'utf-8') as openedCDLICoNLLFile:
             inputLines = list()
 
             for line in openedCDLICoNLLFile:
