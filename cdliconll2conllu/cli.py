@@ -6,15 +6,6 @@ from cdliconll2conllu.converter import CdliCoNLLtoCoNLLUConverter
 
 
 def file_process(cdliconllInFile, verbose=False):
-    # path = os.path.abspath(cdliconllInFile)
-    # newPath = path[:len(path) - len(cdliconllInFile)]
-    # outfolder = newPath + 'output'
-
-    outfolder = os.path.join('output')
-
-    if not os.path.exists(outfolder):
-        os.makedirs(outfolder)
-
     convertor = CdliCoNLLtoCoNLLUConverter(cdliconllInFile, verbose)
     convertor.convert()
     convertor.writeToFile()
@@ -26,7 +17,7 @@ def check_and_process(pathname, verbose=False):
     if S_ISREG(mode) and pathname.lower().endswith('.conll'):
         # It's a file, call the callback function
         if verbose:
-            click.echo('Info: Processing {0}.'.format(pathname))
+            click.echo('\nInfo: Processing {0}.'.format(pathname))
 
         cdliConllFile = pathname
 
@@ -42,7 +33,7 @@ def check_and_process(pathname, verbose=False):
 @click.command()
 @click.option('--input_path', '-i', type=click.Path(exists=True, writable=True), prompt=True, required=True,
               help='Input the file/folder name.')
-@click.option('-v', '--verbose', default=False, required=False, is_flag=True, help='Enables verbose mode')
+@click.option('--verbose', '-v', default=False, required=False, is_flag=True, help='Enables verbose mode')
 @click.version_option()
 def main(input_path, verbose):
     if os.path.isdir(input_path):

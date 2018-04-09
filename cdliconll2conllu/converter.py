@@ -30,7 +30,7 @@ class CdliCoNLLtoCoNLLUConverter:
 
     def convert(self):
         if self.verbose:
-            click.echo('Info: Reading file {0}.'.format(self.cdliCoNLLInputFileName))
+            click.echo('\nInfo: Reading file {0}.'.format(self.cdliCoNLLInputFileName))
 
         with codecs.open(self.cdliCoNLLInputFileName, 'r', 'utf-8') as openedCDLICoNLLFile:
             inputLines = list()
@@ -42,8 +42,10 @@ class CdliCoNLLtoCoNLLUConverter:
                     inputLines.append(line)
                 else:
                     self.headerLines.append(line)
-
-            self.convertCDLICoNLLtoCoNLLU(inputLines)
+            try:
+                self.convertCDLICoNLLtoCoNLLU(inputLines)
+            except:
+                pass
 
     def convertCDLICoNLLtoCoNLLU(self, inputLines):
 
@@ -69,9 +71,9 @@ class CdliCoNLLtoCoNLLUConverter:
                 result['LEMMA'] = segm[start + 1: (position + 1)]
                 if result['LEMMA'] == '':
                     errorLine = '\t'.join(line)
-                    print("Incorrect Segment at Line:", errorLine)
-                    print("Exiting...")
-                    sys.exit(1)
+                    click.echo(
+                        "\nIncorrect Segment at Line '{0}' in file {1}.".format(errorLine, self.cdliCoNLLInputFileName))
+                    pass
 
             if inputData['XPOSTAG'] == '_':
                 result['UPOSTAG'] = '_'
@@ -83,9 +85,9 @@ class CdliCoNLLtoCoNLLUConverter:
                     typeCDLICoNLL = list(set(xpostag).intersection(set(self.cl.xPosTag.keys())))[0]
                 except:
                     errorLine = '\t'.join(line)
-                    print("Error in Parsing Data: Incorrect XPOSTAG at line: ", errorLine)
-                    print("Exiting...")
-                    sys.exit(1)
+                    click.echo("\nError in Parsing Data: Incorrect XPOSTAG at line: '{0}' in file {1}.".format(errorLine,
+                                                                                                             self.cdliCoNLLInputFileName))
+                    pass
 
                 result['UPOSTAG'] = self.cl.xPosTag[typeCDLICoNLL]
                 result['XPOSTAG'] = typeCDLICoNLL
@@ -171,9 +173,9 @@ class CdliCoNLLtoCoNLLUConverter:
         folder = os.path.join(os.path.dirname(self.cdliCoNLLInputFileName), OUTPUT_FOLDER)
         self.outputFileName = os.path.join(folder, os.path.basename(self.cdliCoNLLInputFileName))
         if self.verbose:
-            click.echo('Info: Creating output at {0}.'.format(self.outputFileName))
+            click.echo('\nInfo: Creating output at {0}.'.format(self.outputFileName))
         if not os.path.exists(folder):
-            click.echo('Info: Creating folder at {0} as it does not exist.'.format(folder))
+            click.echo('\nInfo: Creating folder at {0} as it does not exist.'.format(folder))
             os.makedirs(folder)
         with codecs.open(self.outputFileName, 'w+', 'utf-8') as outputFile:
             textNumber = self.headerLines[0]

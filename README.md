@@ -26,19 +26,15 @@ pip install git+https://github.com/cdli-gh/CDLI-CoNLL-to-CoNLLU-Converter.git --
 ```
 
 ### Execution
-To use/execute this tool, run one of the following commands:
+To use/execute this tool on conll file or folder, run one of the following commands:
 
 ```
-cdliconll2conllu -i input_file_name.txt
+cdliconll2conllu -i input_file_name.conll
 ```
 
-To see processing messages on the console, use the verbose option:
+To see processing messages on the console, use the --verbose/-v option:
 ```
-cdliconll2conllu -i input_file_name.txt -v
-```
-OR
-```
-cdliconll2conllu -i input_file_name.txt --verbose
+cdliconll2conllu -i input_file_name.conll -v
 ```
 
 To view all possible options, use the --help option:
