@@ -160,6 +160,7 @@ class CdliCoNLLtoCoNLLUConverter:
 
             result['HEAD'] = inputData['HEAD']
             result['DEPREL'] = inputData['DEPREL']
+            result['DEPS'] = '_'
             result['MISC'] = inputData['MISC']
 
             output = list()
@@ -189,3 +190,5 @@ class CdliCoNLLtoCoNLLUConverter:
                 l = '\t'.join(line)
                 l = l + '\n'
                 outputFile.writelines(l)
+            endLine = '\n'
+            outputFile.writelines(endLine)
