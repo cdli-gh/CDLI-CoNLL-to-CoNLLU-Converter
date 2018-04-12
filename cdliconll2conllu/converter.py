@@ -54,6 +54,11 @@ class CdliCoNLLtoCoNLLUConverter:
             inputList = line
             inputData = dict()
             # print(line)
+
+            if len(inputList) != len(self.cl.cdliConllFields):
+                click.echo("\nIncorrect File Format in file {0}.".format(self.cdliCoNLLInputFileName))
+                pass
+
             for i in range(len(self.cl.cdliConllFields)):
                 inputData[self.cl.cdliConllFields[i]] = inputList[i]
 
