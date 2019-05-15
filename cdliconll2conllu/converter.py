@@ -10,14 +10,16 @@ OUTPUT_FOLDER = 'output'
 
 class CdliCoNLLtoCoNLLUConverter:
 
-    def __init__(self, cdliCoNLLInputFileName, verbose):
+    def __init__(self, cdliCoNLLInputFileName, output_folder, verbose):
         self.cdliCoNLLInputFileName = cdliCoNLLInputFileName
 
         # path = os.path.abspath(cdliCoNLLInputFileName)
         # newPath = path[:len(path) - len(cdliCoNLLInputFileName)]
         # self.outFolder = newPath + OUTPUT_FOLDER
 
-        self.outFolder = os.path.join('', OUTPUT_FOLDER)
+        if(output_folder==None or os.path.samefile(output_folder,os.path.dirname(self.cdliCoNLLInputFileName))):
+            output_folder = os.path.join(os.path.dirname(self.cdliCoNLLInputFileName), OUTPUT_FOLDER)
+        self.outFolder = os.path.join('', output_folder)
         self.verbose = verbose
         self.cl = Mapping()
         self.headerLines = list()
@@ -178,13 +180,12 @@ class CdliCoNLLtoCoNLLUConverter:
             self.outputLines.append(output)
 
     def writeToFile(self):
-        folder = os.path.join(os.path.dirname(self.cdliCoNLLInputFileName), OUTPUT_FOLDER)
-        self.outputFileName = os.path.join(folder, os.path.basename(self.cdliCoNLLInputFileName))
+        self.outputFileName = os.path.join(self.outFolder, os.path.basename(self.cdliCoNLLInputFileName))
         if self.verbose:
             click.echo('\nInfo: Creating output at {0}.'.format(self.outputFileName))
-        if not os.path.exists(folder):
-            click.echo('\nInfo: Creating folder at {0} as it does not exist.'.format(folder))
-            os.makedirs(folder)
+        if not os.path.exists(self.outFolder):
+            click.echo('\nInfo: Creating folder at {0} as it does not exist.'.format(self.outFolder))
+            os.makedirs(self.outFolder)
         with codecs.open(self.outputFileName, 'w+', 'utf-8') as outputFile:
             textNumber = self.headerLines[0]
             textNumber = textNumber + '\n'
