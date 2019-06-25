@@ -34,7 +34,7 @@ def check_and_process(pathname, output_folder, verbose=False):
 @click.option('--input_path', '-i', type=click.Path(exists=True, writable=True), prompt=True, required=True,
               help='Input the file/folder name.')
 @click.option('--verbose', '-v', default=False, required=False, is_flag=True, help='Enables verbose mode')
-@click.option('--output_folder', '-o', default=None, required=False, help='Used to specify the output folder.')
+@click.option('--output_folder', '-o', default=None, type=click.Path(), required=False, help='Used to specify the output folder.')
 @click.version_option()
 
 def main(input_path, output_folder, verbose):
