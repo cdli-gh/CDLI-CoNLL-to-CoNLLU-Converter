@@ -40,7 +40,7 @@ class CdliCoNLLtoCoNLLUConverter:
             for line in openedCDLICoNLLFile:
                 line = line.strip()
                 if line[0] != '#':
-                    line = line.split()
+                    line = line.split("\t")
                     inputLines.append(line)
                 else:
                     self.headerLines.append(line)
