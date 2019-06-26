@@ -39,6 +39,8 @@ class CdliCoNLLtoCoNLLUConverter:
 
             for line in openedCDLICoNLLFile:
                 line = line.strip()
+                if(len(line)==0):
+                    continue
                 if line[0] != '#':
                     line = line.split()
                     inputLines.append(line)
