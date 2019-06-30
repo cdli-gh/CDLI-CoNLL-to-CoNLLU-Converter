@@ -42,7 +42,7 @@ class CdliCoNLLtoCoNLLUConverter:
                 if(len(line)==0):
                     continue
                 if line[0] != '#':
-                    line = line.split()
+                    line = line.split("\t")
                     inputLines.append(line)
                 else:
                     self.headerLines.append(line)
