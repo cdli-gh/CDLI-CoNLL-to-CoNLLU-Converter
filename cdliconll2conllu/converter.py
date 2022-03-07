@@ -54,6 +54,7 @@ class CdliCoNLLtoCoNLLUConverter:
     def convertCDLICoNLLtoCoNLLU(self, inputLines):
 
         # print(inputLines)
+        counter = 1
         for line in inputLines:
             inputList = line
             inputData = dict()
@@ -70,7 +71,10 @@ class CdliCoNLLtoCoNLLUConverter:
 
             result = dict()
 
-            result['ID'] = inputData['ID']
+            # result['ID'] = inputData['ID'] # The old ID, e.g. 'r.4.1'
+
+            result['ID'] = str(counter)
+            counter += 1
             result['FORM'] = inputData['FORM']
 
             if inputData['SEGM'] == '_':
