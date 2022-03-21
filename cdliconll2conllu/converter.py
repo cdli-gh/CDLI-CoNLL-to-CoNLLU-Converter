@@ -2,7 +2,7 @@
 import codecs
 import click
 import os
-from cdliconll2conllu.mapping import Mapping
+from  cdliconll2conllu.mapping import Mapping
 import sys
 
 OUTPUT_FOLDER = 'output'
@@ -52,8 +52,7 @@ class CdliCoNLLtoCoNLLUConverter:
                 pass
 
     def convertCDLICoNLLtoCoNLLU(self, inputLines):
-
-        # print(inputLines)
+        counter = 1
         for line in inputLines:
             inputList = line
             inputData = dict()
@@ -70,7 +69,12 @@ class CdliCoNLLtoCoNLLUConverter:
 
             result = dict()
 
-            result['ID'] = inputData['ID']
+            #result['ID'] = inputData['ID']
+            result['ID'] = str(counter)
+            #result['ID'] = inputData['ID'].split('.')[-1]
+            counter+=1
+
+
             result['FORM'] = inputData['FORM']
 
             if inputData['SEGM'] == '_':
@@ -92,82 +96,84 @@ class CdliCoNLLtoCoNLLUConverter:
                 result['FEATS'] = '_'
             else:
                 xpostag = inputData['XPOSTAG'].split('.')
-                try:
-                    typeCDLICoNLL = list(set(xpostag).intersection(set(self.cl.xPosTag.keys())))[0]
-                except:
-                    errorLine = '\t'.join(line)
-                    click.echo("\nError in Parsing Data: Incorrect XPOSTAG at line: '{0}' in file {1}.".format(errorLine,
-                                                                                                             self.cdliCoNLLInputFileName))
-                    pass
-
-                result['UPOSTAG'] = self.cl.xPosTag[typeCDLICoNLL]
-                result['XPOSTAG'] = typeCDLICoNLL
-                xpostag.pop(xpostag.index(typeCDLICoNLL))
-
-                upostag = self.cl.xPosTag[typeCDLICoNLL]
-                feats = dict()
-                featList = list(xpostag)
-
-                # animacy Hum Mapping to PN, DN, RN
-                HumPos = ['PN', 'DN', 'RN']
-                if typeCDLICoNLL in HumPos:
-                    feats['Animacy'] = 'Hum'
-
-                # print(featList)
-                # default mapping
-                defaults = list()
-                if upostag in self.cl.defaultMap:
-                    for feature in self.cl.defaultMap[upostag]:
-                        feats[feature] = self.cl.defaultMap[upostag][feature]
-                        defaults.append(feature)
-                # print(defaults)
-                # remaining mapping
-                for item in featList:
-                    # print(item)
-                    if item.find('-') != -1:
-                        # print(item)
-                        found = False
-                        for feat in self.cl.posToFeatsMap[upostag]:
-                            if item in self.cl.featsMap[feat]:
-                                if feat in feats:
-                                    if feat in defaults:
-                                        feats[feat] = self.cl.featsMap[feat][item]
-                                        defaults.pop(defaults.index(feat))
-                                    # check if multiple entries allowed
-                                    if feat in self.cl.multiList:
-                                        combinedEntry = str(feats[feat]) + "," + str(self.cl.featsMap[feat][item])
-                                        feats[feat] = combinedEntry
-                                        found = True
-                                else:
-                                    feats[feat] = self.cl.featsMap[feat][item]
-                                    found = True
-                        if found == False:
-                            splitItem = item.split('-')
-                            featList += splitItem
-                            # print(featList)
-                    else:
-                        for feat in self.cl.posToFeatsMap[upostag]:
-                            if item in self.cl.featsMap[feat]:
-                                if feat not in feats:
-                                    feats[feat] = self.cl.featsMap[feat][item]
-                                else:
-                                    if feat in defaults:
-                                        feats[feat] = self.cl.featsMap[feat][item]
-                                        defaults.pop(defaults.index(feat))
-                                    if feat in self.cl.multiList:
-                                        combinedEntry = str(feats[feat]) + "," + str(self.cl.featsMap[feat][item])
-                                        feats[feat] = combinedEntry
-                                        found = True
-                    # print(feats)
-                feature = ''
-                for key, value in feats.items():
-                    feature = feature + key + '=' + value + '|'
-
-                feature = feature[:-1]
-                if feature == '':
+                intersected_xpostag = list(set(xpostag).intersection(set(self.cl.xPosTag.keys())))
+                if len(intersected_xpostag)==0:
+                    result['UPOSTAG'] = '_'
+                    result['XPOSTAG'] = '_'
                     result['FEATS'] = '_'
+                    errorLine = '\t'.join(line)
+                    click.echo("\nIncorrect Segment at Line at line: '{0}' in file {1}.".format(errorLine,
+                                                                                                             self.cdliCoNLLInputFileName))
                 else:
-                    result['FEATS'] = feature
+                    typeCDLICoNLL = intersected_xpostag[0]
+                    result['UPOSTAG'] = self.cl.xPosTag[typeCDLICoNLL]
+                    result['XPOSTAG'] = typeCDLICoNLL
+                    xpostag.pop(xpostag.index(typeCDLICoNLL))
+
+                    upostag = self.cl.xPosTag[typeCDLICoNLL]
+                    feats = dict()
+                    featList = list(xpostag)
+
+                    # animacy Hum Mapping to PN, DN, RN
+                    HumPos = ['PN', 'DN', 'RN']
+                    if typeCDLICoNLL in HumPos:
+                        feats['Animacy'] = 'Hum'
+
+                    # print(featList)
+                    # default mapping
+                    defaults = list()
+                    if upostag in self.cl.defaultMap:
+                        for feature in self.cl.defaultMap[upostag]:
+                            feats[feature] = self.cl.defaultMap[upostag][feature]
+                            defaults.append(feature)
+                    # print(defaults)
+                    # remaining mapping
+                    for item in featList:
+                        # print(item)
+                        if item.find('-') != -1:
+                            # print(item)
+                            found = False
+                            for feat in self.cl.posToFeatsMap[upostag]:
+                                if item in self.cl.featsMap[feat]:
+                                    if feat in feats:
+                                        if feat in defaults:
+                                            feats[feat] = self.cl.featsMap[feat][item]
+                                            defaults.pop(defaults.index(feat))
+                                        # check if multiple entries allowed
+                                        if feat in self.cl.multiList:
+                                            combinedEntry = str(feats[feat]) + "," + str(self.cl.featsMap[feat][item])
+                                            feats[feat] = combinedEntry
+                                            found = True
+                                    else:
+                                        feats[feat] = self.cl.featsMap[feat][item]
+                                        found = True
+                            if found == False:
+                                splitItem = item.split('-')
+                                featList += splitItem
+                                # print(featList)
+                        else:
+                            for feat in self.cl.posToFeatsMap[upostag]:
+                                if item in self.cl.featsMap[feat]:
+                                    if feat not in feats:
+                                        feats[feat] = self.cl.featsMap[feat][item]
+                                    else:
+                                        if feat in defaults:
+                                            feats[feat] = self.cl.featsMap[feat][item]
+                                            defaults.pop(defaults.index(feat))
+                                        if feat in self.cl.multiList:
+                                            combinedEntry = str(feats[feat]) + "," + str(self.cl.featsMap[feat][item])
+                                            feats[feat] = combinedEntry
+                                            found = True
+                        # print(feats)
+                    feature = ''
+                    for key, value in feats.items():
+                        feature = feature + key + '=' + value + '|'
+
+                    feature = feature[:-1]
+                    if feature == '':
+                        result['FEATS'] = '_'
+                    else:
+                        result['FEATS'] = feature
 
             result['HEAD'] = inputData['HEAD']
             result['DEPREL'] = inputData['DEPREL']

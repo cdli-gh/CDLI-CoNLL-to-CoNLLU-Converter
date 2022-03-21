@@ -46,3 +46,6 @@ def main(input_path, output_folder, verbose):
                 check_and_process(pathname, output_folder, verbose)
     else:
         check_and_process(input_path, output_folder, verbose)
+
+if __name__=='__main__':
+    main()
