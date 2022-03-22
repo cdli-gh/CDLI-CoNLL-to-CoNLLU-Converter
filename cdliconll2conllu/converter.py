@@ -57,9 +57,11 @@ class CdliCoNLLtoCoNLLUConverter:
     def get_head_dict(self,inputLines):
         N = len(inputLines)
         head_dict = dict()
+        counter = 1
         for line in inputLines:
             try:
-                head_dict[line[0]] = str(random.randint(1,N))
+                head_dict[line[0]] = str(counter)
+                counter+=1
             except:
                 pass
         return head_dict

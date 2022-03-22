@@ -1,8 +1,8 @@
 #new_text=P100065
 #ID	FORM	LEMMA	UPOSTAG	XPOSTAG	FEATS	HEAD	DEPREL	DEPS	MISC
 1	1(u)	1(u)[ten]	NUM	NU	_	_	_	_	_
-2	gin2	gig[unit]	NOUN	N	Number=Sing	25	_	_	_
-3	ku3-babbar	kugbabbar[silver]	NOUN	N	Number=Sing	20	_	_	_
+2	gin2	gig[unit]	NOUN	N	Number=Sing	1	_	_	_
+3	ku3-babbar	kugbabbar[silver]	NOUN	N	Number=Sing	6	_	_	_
 4	iti	iti[month]	NOUN	N	Number=Sing	_	_	_	_
 5	min-esz3-ta	Minesz[1]	PROPN	MN	Number=Sing|Case=Abl	_	_	_	_
 6	u4	ud[day]	NOUN	N	Number=Sing	_	_	_	_
