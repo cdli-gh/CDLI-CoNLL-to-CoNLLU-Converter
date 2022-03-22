@@ -70,7 +70,7 @@ class CdliCoNLLtoCoNLLUConverter:
         head_dict = self.get_head_dict(inputLines)
         #print(head_dict)
         # total_lines = len(inputLines)
-
+        
         for line in inputLines:
             inputList = line
             inputData = dict()
@@ -86,7 +86,6 @@ class CdliCoNLLtoCoNLLUConverter:
                 inputData[self.cl.cdliConllFields[i]] = inputList[i]
 
             result = dict()
-
             #result['ID'] = inputData['ID']
             #result['ID'] = inputData['ID'].split('.')[-1]
             result['ID'] = str(counter)
