@@ -199,9 +199,9 @@ class CdliCoNLLtoCoNLLUConverter:
             #     result['HEAD'] = "0"
 
             try:
-                result['HEAD'] = head_dict[inputData['ID']]
+                result['HEAD'] = head_dict[inputData['HEAD']]
             except:
-                result['HEAD'] = "0"
+                result['HEAD'] = "_"
 
             result['DEPREL'] = inputData['DEPREL']
             result['DEPS'] = '_'
