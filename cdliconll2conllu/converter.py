@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 import codecs
+from itertools import count
 import click
 import os
-from  cdliconll2conllu.mapping import Mapping
+from mapping import Mapping
 import sys
+import random
 
 OUTPUT_FOLDER = 'output'
 
@@ -51,8 +53,25 @@ class CdliCoNLLtoCoNLLUConverter:
             except:
                 pass
 
+
+    def get_head_dict(self,inputLines):
+        N = len(inputLines)
+        head_dict = dict()
+        for line in inputLines:
+            print(line)
+            try:
+                head_dict[line[0]] = str(random.randint(1,N))
+            except:
+                pass
+        return head_dict
+
+
     def convertCDLICoNLLtoCoNLLU(self, inputLines):
         counter = 1
+        head_dict = self.get_head_dict(inputLines)
+        #print(head_dict)
+        # total_lines = len(inputLines)
+
         for line in inputLines:
             inputList = line
             inputData = dict()
@@ -70,8 +89,8 @@ class CdliCoNLLtoCoNLLUConverter:
             result = dict()
 
             #result['ID'] = inputData['ID']
-            result['ID'] = str(counter)
             #result['ID'] = inputData['ID'].split('.')[-1]
+            result['ID'] = str(counter)
             counter+=1
 
 
@@ -175,7 +194,16 @@ class CdliCoNLLtoCoNLLUConverter:
                     else:
                         result['FEATS'] = feature
 
-            result['HEAD'] = inputData['HEAD']
+            # result['HEAD'] = inputData['HEAD']
+            # result['HEAD'] = str(counter)
+            # if total_lines+1 == counter:
+            #     result['HEAD'] = "0"
+
+            try:
+                result['HEAD'] = head_dict[inputData['ID']]
+            except:
+                result['HEAD'] = "0"
+
             result['DEPREL'] = inputData['DEPREL']
             result['DEPS'] = '_'
             result['MISC'] = inputData['MISC']

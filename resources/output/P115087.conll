@@ -1,14 +1,14 @@
 #new_text=P115087
 #ID	FORM	LEMMA	UPOSTAG	XPOSTAG	FEATS	HEAD	DEPREL	DEPS	MISC
-1	pisan-dub-ba	_	_	_	_	_	_	_	_
-2	tag-tag-ga	_	_	_	_	_	_	_	_
-3	udu	_	_	_	_	_	_	_	_
-4	gukkal-ka	_	_	_	_	_	_	_	_
-5	zu2-si-ka	_	_	_	_	_	_	_	_
-6	gir2-su{ki}-ta	_	_	_	_	_	_	_	_
-7	gu2-ab-ba{ki}-sze3	_	_	_	_	_	_	_	_
-8	i3-gal2	_	_	_	_	_	_	_	_
-9	mu	_	_	_	_	_	_	_	_
-10	hu-hu-nu-ri{ki}	_	_	_	_	_	_	_	_
-11	ba#-hul#	_	_	_	_	_	_	_	_
+1	pisan-dub-ba	_	_	_	_	3	_	_	_
+2	tag-tag-ga	_	_	_	_	5	_	_	_
+3	udu	_	_	_	_	4	_	_	_
+4	gukkal-ka	_	_	_	_	2	_	_	_
+5	zu2-si-ka	_	_	_	_	10	_	_	_
+6	gir2-su{ki}-ta	_	_	_	_	4	_	_	_
+7	gu2-ab-ba{ki}-sze3	_	_	_	_	5	_	_	_
+8	i3-gal2	_	_	_	_	11	_	_	_
+9	mu	_	_	_	_	4	_	_	_
+10	hu-hu-nu-ri{ki}	_	_	_	_	2	_	_	_
+11	ba#-hul#	_	_	_	_	10	_	_	_
 
