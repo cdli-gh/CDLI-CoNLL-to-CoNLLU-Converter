@@ -2,7 +2,7 @@ import os
 import click
 from stat import ST_MODE, S_ISREG
 
-from converter import CdliCoNLLtoCoNLLUConverter
+from cdliconll2conllu.converter import CdliCoNLLtoCoNLLUConverter
 
 
 def file_process(cdliconllInFile, output_folder, verbose=False):

@@ -1,64 +1,64 @@
 #new_text=P100149
 #ID	FORM	LEMMA	UPOSTAG	XPOSTAG	FEATS	HEAD	DEPREL	DEPS	MISC
-1	1(ban2)	1(ban)[unit]	NOUN	N	Number=Sing	35	_	_	_
-2	5(disz)	5(disz)[one]	NUM	NU	_	17	_	_	_
-3	sila3	sila[unit]	NOUN	N	Number=Sing	48	_	_	_
-4	zi3	zid[flour]	NOUN	N	Number=Sing	57	N.ABS	_	_
-5	u4	ud[day]	NOUN	N	Number=Sing	16	_	_	_
-6	3(disz)-kam	3(disz)[one]	NUM	NU	Case=Gen	52	_	_	_
-7	sza3-iri	Sza'iri[1]	PROPN	PN	Animacy=Hum|Number=Sing	25	_	_	_
-8	5(disz)	5(disz)[one]	NUM	NU	_	3	_	_	_
-9	sila3	sila[unit]	NOUN	N	Number=Sing	6	_	_	_
-10	zi3	zid[flour]	NOUN	N	Number=Sing	13	N.ABS	_	_
-11	kaskal	kaskal[way]	NOUN	N	Number=Sing	54	_	_	_
-12	ka5-a	Ka'a[1]	PROPN	PN	Animacy=Hum|Number=Sing	21	_	_	_
-13	sukkal	sukkal[secretary]	NOUN	N	Number=Sing	39	N.GEN	_	sukkal[secretary][-ra]
-14	sa-bu-um{ki}-sze3	Sabum[1]	PROPN	SN	Number=Sing	1	_	_	_
-15	du-ni	du[go]	VERB	V	Person=3|Number=Sing	44	_	_	_
-16	1(ban2)	1(ban)[unit]	NOUN	N	Number=Sing	19	_	_	_
-17	zi3	zid[flour]	NOUN	N	Number=Sing	39	N.ABS	_	_
-18	u4	ud[day]	NOUN	N	Number=Sing	14	_	_	_
-19	2(disz)-kam	2(disz)[one]	NUM	NU	Case=Gen	36	NU.GEN.COP-3-SG _  _ _	_	_
-20	szu-{d}en-lil2	Szu'enlil[1]	PROPN	PN	Animacy=Hum|Number=Sing	14	_	_	_
-21	dumu	dumu[child]	NOUN	N	Number=Sing	54	_	_	_
-22	nu-banda3	nubanda[overseer]	NOUN	N	Number=Sing|Case=Gen	24	_	_	_
-23	1(ban2)	1(ban)[unit]	NOUN	N	Number=Sing	50	_	_	_
-24	zi3	zid[flour]	NOUN	N	Number=Sing	38	N.ABS	_	_
-25	u4	ud[day]	NOUN	N	Number=Sing	25	_	_	_
-26	2(disz)-kam	2(disz)[one]	NUM	NU	Case=Gen	45	NU.GEN.COP-3-SG _  _ _	_	_
-27	kal-la-mu	Kallam[1]	PROPN	PN	Animacy=Hum|Number=Sing	5	_	_	_
-28	aga3-us2-gal	aga'usgal[head_soldier]	NOUN	N	Number=Sing	54	_	_	_
-29	...{ki}-ta	_[1]	PROPN	SN	Number=Sing|Case=Abl	10	_	_	_
-30	du-ni	du[go]	VERB	V	Person=3|Number=Sing	57	_	_	_
-31	1(ban2)	1(ban)[unit]	NOUN	N	Number=Sing	37	_	_	_
-32	...	_[_]	_	_	_	49	_	_	_
-33	da-da-ni	Dadani[1]	PROPN	PN	Animacy=Hum|Number=Sing	35	_	_	_
-34	dumu	dumu[child]	NOUN	N	Number=Sing	11	_	_	_
-35	nu-banda3	nubanda[overseer]	NOUN	N	Number=Sing|Case=Gen	12	_	_	_
-36	4(disz)	4(disz)[one]	NUM	NU	_	20	_	_	_
-37	sila3	sila[unit]	NOUN	N	Number=Sing	8	_	_	_
-38	zi3	zid[flour]	NOUN	N	Number=Sing	9	N.ABS	_	_
-39	u4	ud[day]	NOUN	N	Number=Sing	24	_	_	_
-40	2(disz)-kam	2(disz)[one]	NUM	NU	Case=Gen	27	NU.GEN.COP-3-SG _  _ _	_	_
-41	e-la-nu-id	Elanu'id[1]	PROPN	PN	Animacy=Hum|Number=Sing	4	_	_	_
-42	lu2	lu[person]	NOUN	N	Number=Sing	41	N _ _ _	_	_
-43	kas4	gir[runner]	NOUN	N	Number=Sing	17	N.DAT	_	kasz[runner]
-44	sa-bu-um{ki}-ta	Sabum[1]	PROPN	SN	Number=Sing	39	_	_	_
-45	du-ni	du[go]	VERB	V	Person=3|Number=Sing	50	_	_	_
-46	5(disz)	5(disz)[one]	NUM	NU	_	32	_	_	_
-47	sila3	sila[unit]	NOUN	N	Number=Sing	50	_	_	_
-48	zi3	zid[flour]	NOUN	N	Number=Sing	51	N.ABS	_	_
-49	sza3-iri	Sza'iri[1]	PROPN	PN	Animacy=Hum|Number=Sing	51	_	_	_
-50	5(disz)	5(disz)[one]	NUM	NU	_	49	_	_	_
+1	1(ban2)	1(ban)[unit]	NOUN	N	Number=Sing	33	_	_	_
+2	5(disz)	5(disz)[one]	NUM	NU	_	25	_	_	_
+3	sila3	sila[unit]	NOUN	N	Number=Sing	41	_	_	_
+4	zi3	zid[flour]	NOUN	N	Number=Sing	24	N.ABS	_	_
+5	u4	ud[day]	NOUN	N	Number=Sing	41	_	_	_
+6	3(disz)-kam	3(disz)[one]	NUM	NU	Case=Gen	41	_	_	_
+7	sza3-iri	Sza'iri[1]	PROPN	PN	Animacy=Hum|Number=Sing	55	_	_	_
+8	5(disz)	5(disz)[one]	NUM	NU	_	25	_	_	_
+9	sila3	sila[unit]	NOUN	N	Number=Sing	24	_	_	_
+10	zi3	zid[flour]	NOUN	N	Number=Sing	54	N.ABS	_	_
+11	kaskal	kaskal[way]	NOUN	N	Number=Sing	27	_	_	_
+12	ka5-a	Ka'a[1]	PROPN	PN	Animacy=Hum|Number=Sing	10	_	_	_
+13	sukkal	sukkal[secretary]	NOUN	N	Number=Sing	60	N.GEN	_	sukkal[secretary][-ra]
+14	sa-bu-um{ki}-sze3	Sabum[1]	PROPN	SN	Number=Sing	20	_	_	_
+15	du-ni	du[go]	VERB	V	Person=3|Number=Sing	41	_	_	_
+16	1(ban2)	1(ban)[unit]	NOUN	N	Number=Sing	6	_	_	_
+17	zi3	zid[flour]	NOUN	N	Number=Sing	25	N.ABS	_	_
+18	u4	ud[day]	NOUN	N	Number=Sing	34	_	_	_
+19	2(disz)-kam	2(disz)[one]	NUM	NU	Case=Gen	16	NU.GEN.COP-3-SG _  _ _	_	_
+20	szu-{d}en-lil2	Szu'enlil[1]	PROPN	PN	Animacy=Hum|Number=Sing	20	_	_	_
+21	dumu	dumu[child]	NOUN	N	Number=Sing	39	_	_	_
+22	nu-banda3	nubanda[overseer]	NOUN	N	Number=Sing|Case=Gen	2	_	_	_
+23	1(ban2)	1(ban)[unit]	NOUN	N	Number=Sing	56	_	_	_
+24	zi3	zid[flour]	NOUN	N	Number=Sing	46	N.ABS	_	_
+25	u4	ud[day]	NOUN	N	Number=Sing	23	_	_	_
+26	2(disz)-kam	2(disz)[one]	NUM	NU	Case=Gen	28	NU.GEN.COP-3-SG _  _ _	_	_
+27	kal-la-mu	Kallam[1]	PROPN	PN	Animacy=Hum|Number=Sing	48	_	_	_
+28	aga3-us2-gal	aga'usgal[head_soldier]	NOUN	N	Number=Sing	9	_	_	_
+29	...{ki}-ta	_[1]	PROPN	SN	Number=Sing|Case=Abl	46	_	_	_
+30	du-ni	du[go]	VERB	V	Person=3|Number=Sing	30	_	_	_
+31	1(ban2)	1(ban)[unit]	NOUN	N	Number=Sing	31	_	_	_
+32	...	_[_]	_	_	_	44	_	_	_
+33	da-da-ni	Dadani[1]	PROPN	PN	Animacy=Hum|Number=Sing	31	_	_	_
+34	dumu	dumu[child]	NOUN	N	Number=Sing	23	_	_	_
+35	nu-banda3	nubanda[overseer]	NOUN	N	Number=Sing|Case=Gen	56	_	_	_
+36	4(disz)	4(disz)[one]	NUM	NU	_	59	_	_	_
+37	sila3	sila[unit]	NOUN	N	Number=Sing	1	_	_	_
+38	zi3	zid[flour]	NOUN	N	Number=Sing	61	N.ABS	_	_
+39	u4	ud[day]	NOUN	N	Number=Sing	30	_	_	_
+40	2(disz)-kam	2(disz)[one]	NUM	NU	Case=Gen	24	NU.GEN.COP-3-SG _  _ _	_	_
+41	e-la-nu-id	Elanu'id[1]	PROPN	PN	Animacy=Hum|Number=Sing	14	_	_	_
+42	lu2	lu[person]	NOUN	N	Number=Sing	27	N _ _ _	_	_
+43	kas4	gir[runner]	NOUN	N	Number=Sing	26	N.DAT	_	kasz[runner]
+44	sa-bu-um{ki}-ta	Sabum[1]	PROPN	SN	Number=Sing	13	_	_	_
+45	du-ni	du[go]	VERB	V	Person=3|Number=Sing	58	_	_	_
+46	5(disz)	5(disz)[one]	NUM	NU	_	35	_	_	_
+47	sila3	sila[unit]	NOUN	N	Number=Sing	56	_	_	_
+48	zi3	zid[flour]	NOUN	N	Number=Sing	47	N.ABS	_	_
+49	sza3-iri	Sza'iri[1]	PROPN	PN	Animacy=Hum|Number=Sing	59	_	_	_
+50	5(disz)	5(disz)[one]	NUM	NU	_	24	_	_	_
 51	sila3	sila[unit]	NOUN	N	Number=Sing	54	_	_	_
-52	zi3	zid[flour]	NOUN	N	Number=Sing	37	N.ABS	_	_
-53	kaskal-sze3	kaskal[way]	NOUN	N	Number=Sing	28	_	_	_
-54	szu-ku-bu-um	Szukubum[1]	PROPN	PN	Animacy=Hum|Number=Sing	46	_	_	_
-55	aga3-us2-gal	aga'usgal[head_soldier]	NOUN	N	Number=Sing	59	_	_	_
-56	szuszin{ki}-sze3	Szuszin[1]	PROPN	SN	Number=Sing	58	_	_	_
-57	du-ni	du[go]	VERB	V	Person=3|Number=Sing	20	_	_	_
-58	iti	iti[month]	NOUN	N	Number=Sing	41	N _  _ _	_	iti[month][-ak]
-59	gu4-ra2-bi2-mu2-mu2	Gurabimumu[1]	PROPN	PN	Animacy=Hum|Number=Sing	40	_	_	_
-60	u4	ud[day]	NOUN	N	Number=Sing	34	_	_	_
-61	x-kam	_(_)[_]	NUM	NU	Case=Gen	24	_	_	_
+52	zi3	zid[flour]	NOUN	N	Number=Sing	27	N.ABS	_	_
+53	kaskal-sze3	kaskal[way]	NOUN	N	Number=Sing	49	_	_	_
+54	szu-ku-bu-um	Szukubum[1]	PROPN	PN	Animacy=Hum|Number=Sing	2	_	_	_
+55	aga3-us2-gal	aga'usgal[head_soldier]	NOUN	N	Number=Sing	43	_	_	_
+56	szuszin{ki}-sze3	Szuszin[1]	PROPN	SN	Number=Sing	4	_	_	_
+57	du-ni	du[go]	VERB	V	Person=3|Number=Sing	14	_	_	_
+58	iti	iti[month]	NOUN	N	Number=Sing	26	N _  _ _	_	iti[month][-ak]
+59	gu4-ra2-bi2-mu2-mu2	Gurabimumu[1]	PROPN	PN	Animacy=Hum|Number=Sing	54	_	_	_
+60	u4	ud[day]	NOUN	N	Number=Sing	1	_	_	_
+61	x-kam	_(_)[_]	NUM	NU	Case=Gen	42	_	_	_
 

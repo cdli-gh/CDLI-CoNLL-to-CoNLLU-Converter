@@ -3,7 +3,7 @@ import codecs
 from itertools import count
 import click
 import os
-from mapping import Mapping
+from cdliconll2conllu.mapping import Mapping
 import sys
 import random
 
@@ -58,7 +58,6 @@ class CdliCoNLLtoCoNLLUConverter:
         N = len(inputLines)
         head_dict = dict()
         for line in inputLines:
-            print(line)
             try:
                 head_dict[line[0]] = str(random.randint(1,N))
             except:
