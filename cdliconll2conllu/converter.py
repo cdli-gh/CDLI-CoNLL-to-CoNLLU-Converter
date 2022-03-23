@@ -89,12 +89,12 @@ class CdliCoNLLtoCoNLLUConverter:
 
             result = dict()
 
-            #result['ID'] = inputData['ID']
+
+            #result['ID'] = inputData['ID'] # The old ID, e.g. 'r.4.1'
             #result['ID'] = inputData['ID'].split('.')[-1]
             result['ID'] = str(counter)
             counter+=1
-
-
+            
             result['FORM'] = inputData['FORM']
 
             if inputData['SEGM'] == '_':
