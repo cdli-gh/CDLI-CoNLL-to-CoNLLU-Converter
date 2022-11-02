@@ -19,8 +19,11 @@ setup(
 
     entry_points={
 
+        # 'console_scripts': [
+        #     'cdliconll2conllu = cdliconll2conllu.cli:main'
+        # ]
         'console_scripts': [
-            'cdliconll2conllu = cdliconll2conllu.cli:main'
+            'cli = cli:main'
         ]
     },
     classifiers=[

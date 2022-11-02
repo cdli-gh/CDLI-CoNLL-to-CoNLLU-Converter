@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"name": "cdli_conllu_files",
+			"path": "../../CDLI/cdli_conllu_files"
+		},
+		{
+			"name": "conllu_files",
+			"path": "../../CDLI/conllu_files"
+		},
+		{
+			"name": "CDLI-CoNLL-to-CoNLLU-Converter",
+			"path": ".."
+		}
+	],
+	"settings": {}
+}
