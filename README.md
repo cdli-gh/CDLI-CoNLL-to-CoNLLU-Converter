@@ -32,6 +32,13 @@ To use/execute this tool on CoNLL file, run the following command:
 cdliconll2conllu -i input_file_name.conll
 ```
 
+To use/execute this tool on CoNLLU file, converting it to a CDLI-CoNLL file, run the following command:
+
+
+```
+cdliconll2conllu -s input_conllu_file_name.conll
+```
+
 To use/execute this tool on a folder containing CoNLL files, run the following command:
 
 ```
