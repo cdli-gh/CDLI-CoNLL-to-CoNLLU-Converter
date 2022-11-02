@@ -7,7 +7,7 @@ from cdliconll2conllu.mapping import Mapping
 import sys
 import random
 
-OUTPUT_FOLDER = 'output'
+OUTPUT_FOLDER = 'output_2'
 
 
 class CdliCoNLLtoCoNLLUConverter:
@@ -64,6 +64,7 @@ class CdliCoNLLtoCoNLLUConverter:
                 counter+=1
             except:
                 pass
+        
         return head_dict
 
 
