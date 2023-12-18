@@ -18,12 +18,8 @@ setup(
     install_requires=dependencies,
 
     entry_points={
-
-        # 'console_scripts': [
-        #     'cdliconll2conllu = cdliconll2conllu.cli:main'
-        # ]
         'console_scripts': [
-            'cli = cli:main'
+            'cdliconll2conllu = cdliconll2conllu.cli:main'
         ]
     },
     classifiers=[
